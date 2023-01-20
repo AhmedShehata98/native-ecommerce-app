@@ -15,54 +15,45 @@ const Stack = createNativeStackNavigator();
 
 const NavigationTabs = () => {
   return (
-    <Stack.Navigator initialRouteName="starting">
-      <Stack.Screen component={Starting} />
-      <Stack.Screen name="starting">
-        {() => (
-          <Tabs.Navigator
-            screenOptions={({ route, navigation }) => ({
-              tabBarIcon: ({ color, focused, size }) => {
-                let iconName: string = "";
-                console.log(route.name);
-                switch (route.name) {
-                  case "home":
-                    iconName = "home";
-                    break;
-                  case "profile":
-                    iconName = "user-circle";
-                    break;
-                  case "cart":
-                    iconName = "shopping-cart";
-                    break;
-                  case "productDetails":
-                    iconName = "product-hunt";
-                    break;
-                  default:
-                    iconName = "user-circle";
-                    break;
-                }
-                return (
-                  <FontAwesome name={iconName} size={size} color={color} />
-                );
-              },
-              tabBarShowLabel: false,
-              tabBarActiveBackgroundColor: "#928f8f",
-              tabBarItemStyle: { borderRadius: 50, padding: 5 },
-              tabBarStyle: { height: 56 },
-              tabBarIconStyle: { height: 25, width: 25 },
-              tabBarActiveTintColor: "#0b0b0c",
-              tabBarInactiveTintColor: "#636868",
-              headerShown: false,
-            })}
-          >
-            <Tabs.Screen name="home" component={Home} />
-            <Tabs.Screen name="productDetails" component={ProductDetails} />
-            <Tabs.Screen name="cart" component={Cart} />
-            <Tabs.Screen name="profile" component={Profile} />
-          </Tabs.Navigator>
-        )}
-      </Stack.Screen>
-    </Stack.Navigator>
+    <Tabs.Navigator
+      initialRouteName="starting"
+      screenOptions={({ route, navigation }) => ({
+        tabBarIcon: ({ color, focused, size }) => {
+          let iconName: string = "";
+          switch (route.name) {
+            case "home":
+              iconName = "home";
+              break;
+            case "profile":
+              iconName = "user-circle";
+              break;
+            case "cart":
+              iconName = "shopping-cart";
+              break;
+            case "productDetails":
+              iconName = "product-hunt";
+              break;
+            default:
+              iconName = "user-circle";
+              break;
+          }
+          return <FontAwesome name={iconName} size={size} color={color} />;
+        },
+        tabBarShowLabel: false,
+        tabBarActiveBackgroundColor: "#928f8f",
+        tabBarItemStyle: { borderRadius: 50, padding: 5 },
+        tabBarStyle: { height: 56 },
+        tabBarIconStyle: { height: 25, width: 25 },
+        tabBarActiveTintColor: "#0b0b0c",
+        tabBarInactiveTintColor: "#636868",
+        headerShown: false,
+      })}
+    >
+      <Tabs.Screen name="home" component={Home} />
+      <Tabs.Screen name="productDetails" component={ProductDetails} />
+      <Tabs.Screen name="cart" component={Cart} />
+      <Tabs.Screen name="profile" component={Profile} />
+    </Tabs.Navigator>
   );
 };
 
